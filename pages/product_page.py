@@ -18,3 +18,12 @@ class ProductPage(BasePage):
         basket_sum_in_alert = alerts[2].text
         assert self.browser.find_element(*P.PRODUCT_PRICE).text == basket_sum_in_alert, \
             "Basket sum isn't equal to product price at link " + self.browser.current_url
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*P.ALERT_MESSAGES), \
+            "Success message is presented, but should not be"
+
+    def success_message_is_disappeared(self):
+        assert self.is_element_present(*P.ALERT_MESSAGES)
+        assert self.is_disappeared(*P.ALERT_MESSAGES), \
+            "Success message is presented, but should disappear"
