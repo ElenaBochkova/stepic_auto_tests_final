@@ -24,6 +24,7 @@ class ProductPage(BasePage):
             "Success message is presented, but should not be"
 
     def success_message_is_disappeared(self):
-        assert self.is_element_present(*P.ALERT_MESSAGES)
+        assert self.is_element_present(*P.ALERT_MESSAGES), \
+            "There is no success messages"
         assert self.is_disappeared(*P.ALERT_MESSAGES), \
             "Success message is presented, but should disappear"
