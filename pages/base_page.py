@@ -5,6 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
 from .locators import BasePageLocators as B
+import random
+import string
 
 
 class BasePage():
@@ -62,3 +64,16 @@ class BasePage():
     def go_to_basket(self):
         link = self.browser.find_element(*B.BASKET_LINK)
         link.click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*B.USER_ICON), "User icon is not presented,"\
+                                                      " probably unauthorised user"
+
+    def logout(self):
+        link = self.browser.find_element(*B.LOGOUT_LINK)
+        link.click()
+        self.should_be_login_link()
+
+    def random_line(self, length):
+        symbols = string.ascii_letters + string.digits
+        return "".join([random.choice(symbols) for i in range(length)])
