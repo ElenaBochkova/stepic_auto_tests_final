@@ -99,7 +99,7 @@ class TestUserAddToBasketFromProductPage():
 
     @pytest.mark.user_in
     def test_user_cant_see_success_message(self, browser):
-        link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
+        link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209"
         page = ProductPage(browser, link)
         page.open()
         page.should_not_be_success_message()
